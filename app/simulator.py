@@ -124,7 +124,7 @@ if "prediction_result" in st.session_state:
             st.metric("Predicted class", f"Class {pred}")
             st.metric("Top class probability", f"{np.max(probs)*100:.1f}%")
             chart = pd.DataFrame({"Estimated probability": probs}, index=labels)
-            st.bar_chart(chart, horizontal=True)
+            st.bar_chart(chart)
 
     st.subheader("3. Probability comparison")
     comparison = pd.DataFrame({
