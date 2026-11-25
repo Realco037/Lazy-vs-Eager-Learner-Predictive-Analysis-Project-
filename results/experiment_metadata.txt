@@ -1,0 +1,8 @@
+Dataset: UCI Wine Recognition (scikit-learn load_wine distribution)
+Records: 178
+Features: 13
+Classes: 3
+Split: stratified 75/25, random_state=42
+KNN: StandardScaler + KNeighborsClassifier(n_neighbors=5)
+Decision Tree: DecisionTreeClassifier(max_depth=4, random_state=42)
+Prediction timing: mean of 30 full-test-batch calls after one warm-up call.

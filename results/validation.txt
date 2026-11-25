@@ -1,0 +1,6 @@
+Dataset shape including target: (178, 14)
+Independent attributes: 13
+Test records: 45
+Notebook status: Executed successfully with nbclient.
+Streamlit app syntax compilation: passed.
+Updated simulator prediction timing: batch model.predict call only; per-record table construction and UI rendering are outside timed region.

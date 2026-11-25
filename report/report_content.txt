@@ -1,0 +1,90 @@
+
+LAZY VS EAGER LEARNING: K-NEAREST NEIGHBORS VS DECISION TREE
+Data Science Minor Project Report
+
+Submitted by: [STUDENT NAME]
+Registration No.: [REGISTRATION NUMBER]
+Programme and Section: [PROGRAMME / SECTION]
+Course Code: [COURSE CODE]
+Under the Guidance of: [SUPERVISOR NAME]
+Lovely Professional University, Phagwara, Punjab
+
+ABSTRACT
+This project compares a lazy learning algorithm, K-Nearest Neighbors (KNN), with an eager learning algorithm, Decision Tree, on the Wine Recognition dataset. Both models were evaluated using the same stratified training and test split. The analysis considers classification accuracy, macro precision, macro recall, macro F1-score, training time, and prediction time. A fitted Decision Tree is visualized using the plot_tree function.
+
+PROJECT OBJECTIVES
+1. To study the difference between lazy and eager learning.
+2. To inspect a dataset containing at least twelve independent attributes.
+3. To prepare data and create a reproducible train/test split.
+4. To implement KNN as the lazy learner.
+5. To implement Decision Tree as the eager learner and visualize its decision rules.
+6. To compare classification and timing metrics.
+7. To interpret the results and identify limitations.
+
+1. INTRODUCTION
+Machine learning classification algorithms learn patterns from labelled examples and use those patterns to assign classes to unseen records. Lazy learners defer most generalization until prediction. KNN stores the training observations and finds nearby examples when a prediction is requested. Eager learners construct a model during training. A Decision Tree learns a hierarchy of feature-based splits that can be followed at prediction time.
+
+2. SCOPE OF THE ANALYSIS
+The scope is limited to a controlled comparison of KNN and Decision Tree on the Wine Recognition dataset. The analysis uses 13 numerical attributes and three target classes. It reports predictive metrics and measured execution times on the available runtime. It does not claim that one learning category is universally superior.
+
+3. EXISTING SYSTEM AND LIMITATIONS
+A common approach is to compare models only by accuracy. This omits the computational trade-off between model fitting and prediction. This project reports both training and prediction time. Limitations include the relatively small dataset, dependence on one train/test split, hardware-specific timings, and sensitivity to model hyperparameters.
+
+4. SOURCE OF DATASET
+The dataset is the Wine Recognition dataset distributed through scikit-learn and originating from the UCI Machine Learning Repository [1]. It contains 178 observations, 13 continuous predictor attributes, and a three-class target. The supplied CSV is included in the dataset folder.
+
+5. DATA PREPROCESSING / CLEANING
+The CSV was loaded into a pandas DataFrame. The target column was separated from the 13 predictor columns. The dataset was checked for missing values and inspected using head, info, describe, and class counts. A stratified 75/25 train/test split was created with random_state=42. KNN uses StandardScaler in a scikit-learn Pipeline; the scaler is fitted only on training data. Decision Tree is trained on unscaled numerical features because tree split rules are not dependent on feature magnitude.
+
+6. DATA MODELLING
+KNN uses k=5. The Decision Tree uses max_depth=4 and random_state=42. Both algorithms receive the same training records and are evaluated on the same held-out test records. The chosen parameters are simple baseline settings rather than the result of an extensive hyperparameter search.
+
+7. ANALYSIS ON DATASET
+
+7.1 Introduction
+The analysis evaluates classification quality and computational cost.
+
+7.2 General Description
+The dataset contains chemical measurements associated with wine samples. The target identifies one of three cultivars/classes. Each model predicts the target class for the held-out records.
+
+7.3 Specific Requirements, Functions and Formulas
+Accuracy = (TP + TN) / (TP + TN + FP + FN).
+Precision = TP / (TP + FP).
+Recall = TP / (TP + FN).
+F1 = 2 * (Precision * Recall) / (Precision + Recall).
+Macro averages calculate each class metric independently and then take the unweighted mean.
+Training time is measured around model.fit(). Prediction time is measured around repeated calls to model.predict() on the full test batch after a warm-up call. UI rendering is excluded from benchmark measurements.
+
+7.4 Analysis Results
+The measured results on this run were:
+
+KNN: accuracy 0.9333; macro precision 0.9291; macro recall 0.9352; macro F1 0.9314; training time 0.004078 seconds; mean prediction time per test batch 0.001399 seconds.
+
+Decision Tree: accuracy 0.9556; macro precision 0.9667; macro recall 0.9500; macro F1 0.9565; training time 0.001927 seconds; mean prediction time per test batch 0.000308 seconds.
+
+The values are specific to this run, machine, dataset split and parameter settings. Small timing differences should not be over-interpreted.
+
+7.5 Visualization
+The project includes a class-distribution chart, model metric comparison, training/prediction timing chart, confusion matrices, and a Decision Tree diagram generated with sklearn.tree.plot_tree. The tree diagram exposes the learned feature thresholds and class distributions at each node.
+
+8. LIST OF ANALYSES WITH RESULTS
+- Dataset structure and class distribution.
+- Missing-value inspection.
+- KNN classification evaluation.
+- Decision Tree classification evaluation.
+- Confusion matrix comparison.
+- Training and prediction timing comparison.
+- Decision Tree structure visualization.
+
+9. FUTURE SCOPE
+Future work can evaluate multiple stratified splits or cross-validation, conduct hyperparameter tuning, compare larger datasets, test different values of k and tree depth, and measure memory usage. A larger dataset would make computational scaling effects easier to observe.
+
+10. CONCLUSION
+This project implemented one lazy learner and one eager learner using a shared dataset and test split. KNN performs neighbour search at prediction time, while Decision Tree constructs decision rules during training. The final interpretation should consider both predictive scores and the separate timing measurements. No universal claim can be made from one small dataset.
+
+REFERENCES
+[1] M. Lichman, “UCI Machine Learning Repository,” University of California, Irvine, School of Information and Computer Sciences, 2013. [Online]. Available: https://archive.ics.uci.edu/
+[2] F. Pedregosa et al., “Scikit-learn: Machine Learning in Python,” Journal of Machine Learning Research, vol. 12, pp. 2825–2830, 2011.
+[3] T. M. Mitchell, Machine Learning. New York, NY, USA: McGraw-Hill, 1997.
+
+NOTE: Complete student/supervisor details and verify institution-specific front matter before submission. The university instructions specify 30–80 pages; this compact draft must be expanded with the required front matter, full figure pages, and institutional details if a strict 30-page minimum is enforced.
